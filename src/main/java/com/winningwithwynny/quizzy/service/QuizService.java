@@ -1,4 +1,4 @@
 package com.winningwithwynny.quizzy.service;
 
-public class ProductService {
+public class QuizService {
 }
