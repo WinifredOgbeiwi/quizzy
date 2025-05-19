@@ -4,7 +4,8 @@ import com.winningwithwynny.quizzy.model.User;
 import com.winningwithwynny.quizzy.repository.UserRepository;
 import com.winningwithwynny.quizzy.request.UserRequest;
 import com.winningwithwynny.quizzy.response.UserResponse;
-import com.winningwithwynny.quizzy.support.UserMapper;
+import com.winningwithwynny.quizzy.support.user.UserExceptionSupplier;
+import com.winningwithwynny.quizzy.support.user.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,12 @@ public class UserService {
     private final UserMapper userMapper;
 
     public UserResponse create(UserRequest userRequest){
+        if(userRepository.existsByEmail(userRequest.getEmail())){
+            throw UserExceptionSupplier.emailAlreadyExist(userRequest.getEmail()).get();
+        }
+        if(userRepository.existsByUsername(userRequest.getUsername())){
+            throw UserExceptionSupplier.userAlreadyExist(userRequest.getUsername()).get();
+        }
         User user = userRepository.save(userMapper.toUser(userRequest));
         return userMapper.toUserResponse(user);
     }

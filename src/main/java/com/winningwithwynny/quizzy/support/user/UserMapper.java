@@ -1,4 +1,4 @@
-package com.winningwithwynny.quizzy.support;
+package com.winningwithwynny.quizzy.support.user;
 
 import com.winningwithwynny.quizzy.model.User;
 import com.winningwithwynny.quizzy.request.UserRequest;
