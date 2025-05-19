@@ -8,6 +8,9 @@ import com.winningwithwynny.quizzy.support.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -18,6 +21,10 @@ public class UserService {
     public UserResponse create(UserRequest userRequest){
         User user = userRepository.save(userMapper.toUser(userRequest));
         return userMapper.toUserResponse(user);
+    }
+
+    public List<UserResponse> findAll(){
+        return userRepository.findAll().stream().map(userMapper::toUserResponse).collect(Collectors.toList());
     }
 
 }
