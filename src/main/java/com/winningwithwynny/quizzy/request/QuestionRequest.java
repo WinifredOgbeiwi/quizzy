@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class QuizRequest {
-    private String title;
-    private String description;
-    private List<String> tags;
+public class QuestionRequest {
+    private Long quiz_id;
+    private String question;
+    private List<String> options;
+    private String correctAnswer;
 }
