@@ -32,4 +32,10 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userResponses);
     }
 
+    @GetMapping("/{id}")
+    @Operation(summary = "Find user by id")
+    public ResponseEntity<UserResponse> find(@PathVariable Long id ){
+        UserResponse userResponses = userService.find(id);
+        return ResponseEntity.status(HttpStatus.OK).body(userResponses);
+    }
 }

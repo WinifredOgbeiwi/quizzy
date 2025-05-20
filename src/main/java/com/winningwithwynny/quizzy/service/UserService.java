@@ -34,4 +34,12 @@ public class UserService {
         return userRepository.findAll().stream().map(userMapper::toUserResponse).collect(Collectors.toList());
     }
 
+    public UserResponse find(Long id){
+        User user = userRepository.findById(id).orElseThrow(UserExceptionSupplier.userNotFound(id));
+        return userMapper.toUserResponse(user);
+    }
+
+
+
+
 }

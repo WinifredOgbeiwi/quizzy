@@ -2,6 +2,7 @@ package com.winningwithwynny.quizzy.support.user;
 
 import com.winningwithwynny.quizzy.support.ErrorMessageResponse;
 import com.winningwithwynny.quizzy.support.exception.user.EmailAlreadyExistException;
+import com.winningwithwynny.quizzy.support.exception.user.UserNotFoundException;
 import com.winningwithwynny.quizzy.support.exception.user.UsernameAlreadyExistException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,4 +33,13 @@ public class UserExceptionAdvisor {
         LOG.error("Email already exist: {}", e.getMessage(), e);
         return new ErrorMessageResponse("Error: " + e.getMessage());
     }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public ErrorMessageResponse userNotFound(Exception e) {
+        LOG.error("Error {}", e.getMessage(), e);
+        return new ErrorMessageResponse("Error: " + e.getMessage());
+    }
+
 }
