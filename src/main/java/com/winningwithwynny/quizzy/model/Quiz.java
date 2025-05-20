@@ -26,4 +26,7 @@ public class Quiz {
 
     @ElementCollection
     private List<String> tags;
+
+    public Quiz(String title, String description, List<String> tags) {
+    }
 }
