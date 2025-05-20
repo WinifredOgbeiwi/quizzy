@@ -6,9 +6,11 @@ import com.winningwithwynny.quizzy.request.QuizRequest;
 import com.winningwithwynny.quizzy.response.QuizResponse;
 import com.winningwithwynny.quizzy.support.quiz.QuizExceptionSupplier;
 import com.winningwithwynny.quizzy.support.quiz.QuizMapper;
-import com.winningwithwynny.quizzy.support.user.UserExceptionSupplier;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +26,28 @@ public class QuizService {
         Quiz quiz = quizRepository.save(quizMapper.toQuiz(quizRequest));
         return quizMapper.toQuizResponse(quiz);
     }
+
+    public QuizResponse update(Long id, QuizRequest quizRequest){
+        Quiz quiz = quizRepository.findById(id).orElseThrow(QuizExceptionSupplier.quizNotFound(id));
+        quizRepository.save(quizMapper.toQuiz(quizRequest));
+        return quizMapper.toQuizResponse(quiz);
+    }
+
+    public List<QuizResponse> findAll(){
+        return quizRepository.findAll().stream().map(quizMapper::toQuizResponse).collect(Collectors.toList());
+    }
+
+    public QuizResponse find(Long id){
+        Quiz quiz = quizRepository.findById(id).orElseThrow(QuizExceptionSupplier.quizNotFound(id));
+        return quizMapper.toQuizResponse(quiz);
+    }
+
+    public QuizResponse delete(Long id){
+        Quiz quiz = quizRepository.findById(id).orElseThrow(QuizExceptionSupplier.quizNotFound(id));
+        quizRepository.deleteById(quiz.getId());
+        return quizMapper.toQuizResponse(quiz);
+    }
+
 
 
 
