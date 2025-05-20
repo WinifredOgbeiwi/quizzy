@@ -1,4 +1,8 @@
 package com.winningwithwynny.quizzy.repository;
 
-public class QuizRepository {
+import com.winningwithwynny.quizzy.model.Quiz;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface QuizRepository extends JpaRepository<Quiz, Long> {
+
 }
