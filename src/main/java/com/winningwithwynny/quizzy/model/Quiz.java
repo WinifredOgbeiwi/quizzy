@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@Entity(name = "quizzes")
+@Entity(name = "quiz")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "quizzes")
+@Table(name = "quiz")
 public class Quiz {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +28,8 @@ public class Quiz {
     private List<String> tags;
 
     public Quiz(String title, String description, List<String> tags) {
+        this.title = title;
+        this.description = description;
+        this.tags = tags;
     }
 }
