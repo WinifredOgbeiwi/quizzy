@@ -3,7 +3,9 @@ package com.winningwithwynny.quizzy.support.quiz;
 import com.winningwithwynny.quizzy.model.Quiz;
 import com.winningwithwynny.quizzy.request.QuizRequest;
 import com.winningwithwynny.quizzy.response.QuizResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class QuizMapper {
     public Quiz toQuiz(QuizRequest quizRequest){
         return new Quiz( quizRequest.getTitle(), quizRequest.getDescription(),quizRequest.getTags());
