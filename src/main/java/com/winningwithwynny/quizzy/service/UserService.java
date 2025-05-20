@@ -4,6 +4,7 @@ import com.winningwithwynny.quizzy.model.User;
 import com.winningwithwynny.quizzy.repository.UserRepository;
 import com.winningwithwynny.quizzy.request.UserRequest;
 import com.winningwithwynny.quizzy.response.UserResponse;
+import com.winningwithwynny.quizzy.support.exception.user.UserNotFoundException;
 import com.winningwithwynny.quizzy.support.user.UserExceptionSupplier;
 import com.winningwithwynny.quizzy.support.user.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,12 @@ public class UserService {
         return userMapper.toUserResponse(user);
     }
 
+    public UserResponse update(Long id, UserRequest userRequest){
+        User user = userRepository.findById(id).orElseThrow(UserExceptionSupplier.userNotFound(id));
+        userRepository.save(userMapper.toUser(userRequest));
+        return userMapper.toUserResponse(user);
+    }
+
     public List<UserResponse> findAll(){
         return userRepository.findAll().stream().map(userMapper::toUserResponse).collect(Collectors.toList());
     }
@@ -38,6 +45,13 @@ public class UserService {
         User user = userRepository.findById(id).orElseThrow(UserExceptionSupplier.userNotFound(id));
         return userMapper.toUserResponse(user);
     }
+
+    public UserResponse delete(Long id){
+        User user = userRepository.findById(id).orElseThrow(UserExceptionSupplier.userNotFound(id));
+        userRepository.deleteById(user.getId());
+        return userMapper.toUserResponse(user);
+    }
+
 
 
 

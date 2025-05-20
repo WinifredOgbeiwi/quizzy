@@ -27,15 +27,30 @@ public class UserController {
 
     @GetMapping("/")
     @Operation(summary = "Find All Users")
-    public ResponseEntity<List<UserResponse>> findAll(){
+    public ResponseEntity<List<UserResponse>> findAll() {
         List<UserResponse> userResponses = userService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(userResponses);
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Find user by id")
-    public ResponseEntity<UserResponse> find(@PathVariable Long id ){
+    public ResponseEntity<UserResponse> find(@PathVariable Long id) {
         UserResponse userResponses = userService.find(id);
         return ResponseEntity.status(HttpStatus.OK).body(userResponses);
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update user")
+    public ResponseEntity<UserResponse> update(@PathVariable Long id, @RequestBody UserRequest userRequest) {
+        UserResponse userResponse = userService.update(id, userRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(userResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Delete item")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        userService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).body("User with ID " + id + " has been deleted.");
+
     }
 }

@@ -12,7 +12,7 @@ public class UserMapper {
     }
 
     public UserResponse toUserResponse(User user){
-        return new UserResponse(user.getId(), user.getUsername(), user.getEmail());
+        return new UserResponse(user.getId(), user.getUsername(), user.getEmail(),user.getInstitution(),user.getSemester(),user.getPicture());
     }
 
 }

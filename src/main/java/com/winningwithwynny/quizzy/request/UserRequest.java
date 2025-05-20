@@ -11,6 +11,9 @@ public class UserRequest {
     private String username;
     private String email;
     private String password;
+    private String institution;
+    private int semester;
+    private String picture;
 }
 
 

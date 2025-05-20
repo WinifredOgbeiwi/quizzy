@@ -28,6 +28,12 @@ public class User {
     @Size(min = 6)
     private String password;
 
+    private String institution;
+
+    private int Semester;
+
+    private String picture;
+
     public User(String username,String email, String password) {
         this.username = username;
         this.email = email;
