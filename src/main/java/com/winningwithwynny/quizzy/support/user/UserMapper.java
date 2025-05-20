@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserMapper {
     public User toUser(UserRequest userRequest){
-        return new User(userRequest.getUsername(),userRequest.getEmail(),userRequest.getPassword());
+        return new User(userRequest.getUsername(),userRequest.getEmail(),userRequest.getPassword(), userRequest.getInstitution(), userRequest.getSemester(),userRequest.getPicture());
     }
 
     public UserResponse toUserResponse(User user){

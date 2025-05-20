@@ -30,7 +30,7 @@ public class User {
 
     private String institution;
 
-    private int Semester;
+    private int semester;
 
     private String picture;
 
@@ -38,5 +38,14 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User(String username, String email, String password, String institution, int semester, String picture) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.institution = institution;
+        this.semester = semester;
+        this.picture = picture;
     }
 }
