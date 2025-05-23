@@ -4,7 +4,6 @@ import com.winningwithwynny.quizzy.model.User;
 import com.winningwithwynny.quizzy.repository.UserRepository;
 import com.winningwithwynny.quizzy.request.UserRequest;
 import com.winningwithwynny.quizzy.response.UserResponse;
-import com.winningwithwynny.quizzy.support.exception.user.UserNotFoundException;
 import com.winningwithwynny.quizzy.support.user.UserExceptionSupplier;
 import com.winningwithwynny.quizzy.support.user.UserMapper;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +50,6 @@ public class UserService {
         userRepository.deleteById(user.getId());
         return userMapper.toUserResponse(user);
     }
-
 
 
 

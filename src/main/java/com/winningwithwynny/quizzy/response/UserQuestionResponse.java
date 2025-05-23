@@ -9,11 +9,9 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class QuestionResponse {
+public class UserQuestionResponse {
     private Long id;
-    private Long quiz_id;
     private String question;
     private List<String> options;
-    private String correctAnswer;
 
 }

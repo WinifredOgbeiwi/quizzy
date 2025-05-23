@@ -4,6 +4,7 @@ import com.winningwithwynny.quizzy.model.Question;
 import com.winningwithwynny.quizzy.repository.QuestionRepository;
 import com.winningwithwynny.quizzy.request.QuestionRequest;
 import com.winningwithwynny.quizzy.response.QuestionResponse;
+import com.winningwithwynny.quizzy.response.UserQuestionResponse;
 import com.winningwithwynny.quizzy.support.question.QuestionExceptionSupplier;
 import com.winningwithwynny.quizzy.support.question.QuestionMapper;
 
@@ -44,4 +45,11 @@ public class QuestionService {
         questionRepository.deleteById(question.getId());
         return questionMapper.toQuestionResponse(question);
     }
+
+    public List<UserQuestionResponse> findByQuizId(Long quizId) {
+        return questionRepository.findByQuizId(quizId).stream()
+                .map(questionMapper::toQuizStartResponse)
+                .collect(Collectors.toList());
+    }
+
 }

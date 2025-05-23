@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class QuizResultResponse {
     private int totalQuestions;
     private int correctAnswers;
-    private int score;
+    private int scorePercentage;
 }

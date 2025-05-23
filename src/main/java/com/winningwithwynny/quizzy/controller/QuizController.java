@@ -1,7 +1,11 @@
 package com.winningwithwynny.quizzy.controller;
 
+import com.winningwithwynny.quizzy.request.AnswerRequest;
 import com.winningwithwynny.quizzy.request.QuizRequest;
+import com.winningwithwynny.quizzy.response.QuestionResponse;
 import com.winningwithwynny.quizzy.response.QuizResponse;
+import com.winningwithwynny.quizzy.response.QuizResultResponse;
+import com.winningwithwynny.quizzy.service.QuestionService;
 import com.winningwithwynny.quizzy.service.QuizService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
@@ -17,6 +21,7 @@ import java.util.List;
 
 public class QuizController {
     private final QuizService quizService;
+    private final QuestionService questionService;
 
     @PostMapping
     @Operation(summary = "Create Quiz")
@@ -53,6 +58,5 @@ public class QuizController {
         return ResponseEntity.status(HttpStatus.OK).body("Quiz with ID: " + id + " has been deleted.");
 
     }
-
 
 }
