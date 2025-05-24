@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QuizResultResponse {
     private int totalQuestions;
-    private int correctAnswers;
+    private int answers;
     private int scorePercentage;
 }

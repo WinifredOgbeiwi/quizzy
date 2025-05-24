@@ -62,7 +62,7 @@ public class QuizService {
 
         for (Question question : questions) {
             String selectedAnswer = answerRequest.getAnswers().get(question.getId());
-            if (selectedAnswer != null && selectedAnswer.equals(question.getCorrectAnswer())) {
+            if (selectedAnswer != null && selectedAnswer.equals(question.getAnswer())) {
                 correct++;
             }
         }

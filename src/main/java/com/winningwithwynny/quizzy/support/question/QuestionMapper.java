@@ -6,13 +6,11 @@ import com.winningwithwynny.quizzy.response.QuestionResponse;
 import com.winningwithwynny.quizzy.response.UserQuestionResponse;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
 public class QuestionMapper {
 
     public Question toQuestion(QuestionRequest questionRequest){
-        return new Question(questionRequest.getQuiz_id(),questionRequest.getQuestion(),questionRequest.getOptions(),questionRequest.getCorrectAnswer());
+        return new Question(questionRequest.getQuiz_id(),questionRequest.getQuestion(),questionRequest.getOptions(),questionRequest.getAnswer(),questionRequest.getExplanation());
     }
 
     public QuestionResponse toQuestionResponse (Question question){
@@ -21,7 +19,8 @@ public class QuestionMapper {
                 question.getQuiz().getId(),
                 question.getQuestion(),
                 question.getOptions(),
-                question.getCorrectAnswer()
+                question.getAnswer(),
+                question.getExplanation()
 
         );
 

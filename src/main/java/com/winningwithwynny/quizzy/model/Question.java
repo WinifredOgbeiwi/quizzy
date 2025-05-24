@@ -26,17 +26,21 @@ public class Question {
     private List<String> options;
 
     @Column(nullable = false)
-    private String correctAnswer;
+    private String answer;
+
+    private String explanation;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
 
-    public Question(Long quizId, String question, List<String> options, String correctAnswer) {
+    public Question(Long quizId, String question, List<String> options, String answer,String explanation) {
         this.quiz = new Quiz();
         this.quiz.setId(quizId);
-    this.question = question;
-    this.options = options;
-    this.correctAnswer = correctAnswer;
+        this.question = question;
+        this.options = options;
+        this.answer = answer;
+        this.explanation = explanation;
     }
+
 }

@@ -37,7 +37,7 @@ public class QuizController {
         return ResponseEntity.status(HttpStatus.OK).body(quizResponse);
     }
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "Find All Quizzes")
     public ResponseEntity<List<QuizResponse>> findAll() {
         List<QuizResponse> quizResponse = quizService.findAll();

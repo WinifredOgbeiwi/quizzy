@@ -34,7 +34,7 @@ public class QuestionController {
         return ResponseEntity.status(HttpStatus.OK).body(questionResponse);
     }
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "Find All Question")
     public ResponseEntity<List<QuestionResponse>> findAll() {
         List<QuestionResponse> questionResponse = questionService.findAll();
