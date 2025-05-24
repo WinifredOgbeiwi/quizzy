@@ -49,6 +49,7 @@ public class QuizService {
 
     public QuizResponse delete(Long id){
         Quiz quiz = quizRepository.findById(id).orElseThrow(QuizExceptionSupplier.quizNotFound(id));
+        questionRepository.deleteByQuizId(id);
         quizRepository.deleteById(quiz.getId());
         return quizMapper.toQuizResponse(quiz);
     }
